@@ -1,0 +1,41 @@
+# -----------------------------------
+# Docker Compose Setup
+# -----------------------------------
+# File: docker-compose.yml
+services:
+  # llm_service:
+  #   build: ./llm_service
+  #   ports:
+  #     - "8000:8000"
+  #   deploy:
+  #     resources:
+  #       reservations:
+  #         devices:
+  #           - driver: nvidia
+  #             count: 1
+  #             capabilities: [gpu]
+
+  # encoding_service:
+  #   build: ./encoding_service
+  #   ports:
+  #     - "8001:8001"
+
+  vector_db_service:
+    build: ./vector_db
+    ports:
+      - "8002:8002"
+
+  # backend:
+  #   build: ./backend
+  #   ports:
+  #     - "8003:8003"
+  #   depends_on:
+  #     - llm_service
+  #     - encoding_service
+  #     - vector_db_service
+
+  # intake_service:
+  #   build: ./intake_service
+  #   depends_on:
+  #     - encoding_service
+  #     - vector_db_service
